@@ -1,54 +1,58 @@
-{% load bootstrap3 %}{% load static %}
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html'%} {% block content %}
 
-<head>
-    <meta charset="utf-8"> {% if title %}
-    <title>Welcome | Gallery - {{title}}</title>
+
+<div class="container text-center">
+    {% if images %}
+    <h5>Found {{ image|length }} of search term {{message}}</h5>
     {% else %}
-    <title> Welcome | Gallery </title>
-    {% endif %} {% block styles %} {% bootstrap_css %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <h5> Found 0 images for the search term {{message}}</h5>
+    {% endif %}
+</div>
 
-    <!-- bootstrap css -->
+<div class="container">
+    <div class="row">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Display|Josefin+Slab|Open+Sans+Condensed:300|Yanone+Kaffeesatz&display=swap" rel="stylesheet">{% endblock %}
-</head>
 
-<body class="back">
-    {% include "navbar.html" %}
-    <div class="container">
-        {% block content %}{% endblock %} {% block scripts %}
-        <script type="text/javascript" src="{{ STATIC_URL }} /static/js/jquery-3.4.1.js">
-        </script>
-        <script type="text/javascript" src="{{ STATIC_URL }} /static/js/scripts.js">
-        </script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-        {% bootstrap_javascript %} {% endblock %}
-    </div>
+        {% for image in images %}
+        <div class="col-md-4">
 
 
 
-    <script>
-        function copy(element) {
-            $(element).select();
-            document.execCommand("copy");
-        }
-    </script>
-
-    <footer class="page-footer">
+            <div class="card" style="width:auto;">
+                <img class="card-img-top" id="img{{ image.id }}" src="{{image.image.url}}" alt="Card image cap" data-toggle="modal" data-target="#myModal{{ forloop.counter }}">
 
 
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3 sticky-bottom foot">Created by kilitasha © 2020 Copyright:
+                <!-- Modal -->
+                <div class="modal fade" id="myModal{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title text-center" id="exampleModalLongTitle"> {{image.image_name}}</h3>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <p class="card-text">Photo name : {{image.image_name}}.</p>
+                                <img class="card-img-top" id="img{{image.id}}" src="{{image.image.url}}" alt="Card image cap">
+                                <p class="card-text">Photo description : {{image.image_description}}.</p>
+                                <p class="card-text">Shot in : {{image.location}}</p>
+                                <p class="card-text">Category : {{image.category}}</p>
+                                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 padding-1">
+                                    <input id="{{image.id}}-url" class="form-control input-md responsive" type="text" value="https://roy1gallery.herokuapp.com{{image.image.url}}">
+                                </div>
+                                <button type="button" class="button_more btn theme_btn" onclick="copy('#{{image.id}}-url')">Copy Link</button>
 
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- Copyright -->
-
-    </footer>
-</body>
-
-</html>
+        {% endfor %}
+    </div>
+</div>
+<hr> {% endblock %}
