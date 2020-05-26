@@ -41,7 +41,7 @@ Details about the photo | Click on `Copy Link` | Pop up that shows that the imag
 * In your terminal:
         
         $ git clone https://github.com/kilitasha435/gallery.git
-        $ cd memoirs
+        $ cd gallery
 
 ## Running the Application
 * Install virtual environment using `$ python3.6 -m venv --without-pip virtual`
