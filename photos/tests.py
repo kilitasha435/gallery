@@ -109,4 +109,3 @@ class ImageTestClass(TestCase):
         got_image = self.image_test.get_image_by_id(id)
         image = Image.objects.filter(id=self.image_test.id)
         self.assertTrue(len(got_image))
-        

@@ -16,8 +16,8 @@ class Location(models.Model):
         self.update
         
     @classmethod
-    def update_location(cls, id, value):
-        cls.objects.filter(id=id).update(location_name=value)
+    def update_location(self,cls, id, value):
+        self.cls.objects.filter(id=id).update(location_name=value)
     
     
 class Category(models.Model):
@@ -36,7 +36,7 @@ class Category(models.Model):
         self.update
         
     @classmethod
-    def update_category(cls, id, value):
+    def update_category(self,cls, id, value):
         cls.objects.filter(id=id).update(category_name=value)
     
     

@@ -29,4 +29,3 @@ def get_image_by_location(request,location_name):
     locations = Location.objects.all()
     location = location_name
     return render(request, 'location.html', {"location_images": location_images, "location": location, "locations":locations})
-
