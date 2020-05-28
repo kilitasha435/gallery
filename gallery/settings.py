@@ -36,7 +36,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 INSTALLED_APPS = [
     'photos',
-    # 'photos.apps.PhotosConfig',
     'bootstrap3',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
+    # 'django.contrib.sites',
 ]
 
 MIDDLEWARE = [
@@ -166,4 +165,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
-
