@@ -2,7 +2,7 @@
 
 
 ## Description
-A personal gallery application that displays my photos for others to see. You can visit the live site on 
+A personal gallery application that displays my photos for others to see. You can visit the live site on https://tasha-kili.herokuapp.com/
 
 
 ## Author
