@@ -16,14 +16,14 @@ import dj_database_url
 from decouple import config,Csv
 
 MODE=config("MODE", default="dev")
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = config('secret')
 DEBUG = config('DEBUG', default=False, cast=bool)
 # development
 if config('MODE')=="dev":
    DATABASES = {
        'default': {
            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-           'NAME': config('galelry'),
+           'NAME': config('gallery'),
            'USER': config('kevin'),
            'PASSWORD': config('kilitasha@123'),
            'HOST': config('DB_HOST'),
