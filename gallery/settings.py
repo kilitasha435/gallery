@@ -23,9 +23,9 @@ if config('MODE')=="dev":
    DATABASES = {
        'default': {
            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-           'NAME': config('DB_NAME'),
-           'USER': config('DB_USER'),
-           'PASSWORD': config('DB_PASSWORD'),
+           'NAME': config('galelry'),
+           'USER': config('kevin'),
+           'PASSWORD': config('kilitasha@123'),
            'HOST': config('DB_HOST'),
            'PORT': '',
        }
