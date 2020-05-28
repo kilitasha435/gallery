@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'photos.apps.PhotosConfig',
     'bootstrap3',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
+    # 'django.contrib.sites',
+    'photos',
 ]
 
 MIDDLEWARE = [
